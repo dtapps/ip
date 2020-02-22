@@ -14,7 +14,7 @@ use DtApp\Curl\CurlException;
  * Class SiNa
  * @package DtApp\Ip
  */
-class SiNa
+class SiNa extends Client
 {
     /**
      * 新浪接口
@@ -24,12 +24,12 @@ class SiNa
 
     /**
      * 新浪
-     * @param string $ip
+     * @param string $ip IP地址
      * @return bool|false|mixed|string|string[]
      * @throws CurlException
      * @throws IpException
      */
-    public function query($ip = '')
+    protected function query($ip = '')
     {
         if (empty($ip)) throw new IpException('IP地址不能为空');
         $url = $this->query_url . "?ip={$ip}";

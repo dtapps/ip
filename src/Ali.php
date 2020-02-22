@@ -14,7 +14,7 @@ use DtApp\Curl\CurlException;
  * Class Ali
  * @package DtApp\Ip
  */
-class Ali
+class Ali extends Client
 {
     /**
      * 高德地图接口
@@ -38,7 +38,7 @@ class Ali
      * @throws IpException
      * @throws CurlException
      */
-    public function map($key = '', $ip = '', $output = 'JSON')
+    protected function map($key = '', $ip = '', $output = 'JSON')
     {
         if (empty($key)) throw new IpException('开发密钥不能为空');
         $url = $this->map_url . "?parameters&key={$key}&output={$output}";
@@ -54,7 +54,7 @@ class Ali
      * @throws CurlException
      * @throws IpException
      */
-    public function taobao($ip = '')
+    protected function taobao($ip = '')
     {
         if (empty($ip)) throw new IpException('IP地址不能为空');
         $url = $this->taobao_url . "?ip={$ip}";

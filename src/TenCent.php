@@ -14,7 +14,7 @@ use DtApp\Curl\CurlException;
  * Class TenCent
  * @package DtApp\Ip
  */
-class TenCent
+class TenCent extends Client
 {
     /**
      * 高德地图接口
@@ -32,7 +32,7 @@ class TenCent
      * @throws CurlException
      * @throws IpException
      */
-    public function map($key = '', $ip = '', $output = 'JSON')
+    protected function map($key = '', $ip = '', $output = 'JSON')
     {
         if (empty($key)) throw new IpException('开发密钥不能为空');
         $url = $this->map_url . "?key={$key}&output={$output}";

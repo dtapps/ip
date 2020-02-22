@@ -13,7 +13,7 @@ use DtApp\Curl\CurlException;
  * Class SoHu
  * @package DtApp\Ip
  */
-class SoHu
+class SoHu extends Client
 {
     /**
      * 搜狐接口
@@ -21,12 +21,11 @@ class SoHu
      */
     private $index_url = "http://pv.sohu.com/cityjson";
 
-
     /**
      * 搜狐
      * @throws CurlException
      */
-    public function index()
+    protected function index()
     {
         $url = $this->index_url . "?ie=utf-8";
         $curl = new \DtApp\Curl\Client();

@@ -14,7 +14,7 @@ use DtApp\Curl\CurlException;
  * Class BaIdu
  * @package DtApp\Ip
  */
-class BaIdu
+class BaIdu extends Client
 {
     /**
      * 百度地图接口
@@ -38,7 +38,7 @@ class BaIdu
      * @throws CurlException
      * @throws IpException
      */
-    public function map($ak = '', $ip = '', $coor = 'bd09ll')
+    protected function map($ak = '', $ip = '', $coor = 'bd09ll')
     {
         if (empty($ak)) throw new IpException('开发者密钥不能为空');
         $url = $this->map_url . "?ak={$ak}&coor={$coor}";
@@ -54,7 +54,7 @@ class BaIdu
      * @throws IpException
      * @throws CurlException
      */
-    public function search(string $ip)
+    protected function search(string $ip)
     {
         if (empty($ip)) throw new IpException('IP地址不能为空');
         $url = $this->search_url . "?query={$ip}&co=&resource_id=6006&ie=utf8&oe=utf8&cb=json";

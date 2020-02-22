@@ -14,7 +14,7 @@ use DtApp\Curl\CurlException;
  * Class Lookup
  * @package DtApp\Ip
  */
-class Lookup
+class Lookup extends Client
 {
     /**
      * lookup接口
@@ -24,11 +24,10 @@ class Lookup
 
     /**
      * lookup
-     * @param $ip
      * @return bool|mixed|string
      * @throws CurlException
      */
-    public function onebox($ip = '')
+    protected function index()
     {
         $url = $this->index_url;
         $curl = new \DtApp\Curl\Client();

@@ -14,7 +14,7 @@ use DtApp\Curl\CurlException;
  * Class International
  * @package DtApp\Ip
  */
-class International
+class International extends Client
 {
     /**
      * batch接口
@@ -28,7 +28,7 @@ class International
      * @return bool|mixed|string
      * @throws CurlException
      */
-    public function onebox($lang = 'zh-CN')
+    protected function index($lang = 'zh-CN')
     {
         $url = $this->index_url . "?lang={$lang}";
         $curl = new \DtApp\Curl\Client();

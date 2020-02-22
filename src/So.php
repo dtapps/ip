@@ -13,7 +13,7 @@ use DtApp\Curl\CurlException;
  * Class So
  * @package DtApp\Ip
  */
-class So
+class So extends Client
 {
     /**
      * 好搜接口
@@ -23,12 +23,12 @@ class So
 
     /**
      * 好搜
-     * @param $ip
+     * @param string $ip IP地址
      * @return bool|mixed|string
      * @throws IpException
      * @throws CurlException
      */
-    public function onebox($ip = '')
+    protected function onebox(string $ip = '')
     {
         if (empty($ip)) throw new IpException('IP地址不能为空');
         $url = $this->onebox_url . "?type=ip&src=onebox&tpl=0&num=1&query=ip&ip={$ip}&url=ip";

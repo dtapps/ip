@@ -13,7 +13,7 @@ use DtApp\Curl\CurlException;
  * Class PConLine
  * @package DtApp\Ip
  */
-class PConLine
+class PConLine extends Client
 {
     /**
      * 太平洋接口
@@ -27,9 +27,8 @@ class PConLine
      * @return bool|false|mixed|string
      * @throws CurlException
      */
-    public function index($ip = '')
+    protected function index($ip = '')
     {
-        header('Content-type: text/html;charset=utf-8');
         $url = $this->index_url . "?json=true";
         if (!empty($ip)) $url = $this->index_url . "?json=true&ip={$ip}";
         $curl = new \DtApp\Curl\Client();
