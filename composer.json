@@ -1,0 +1,39 @@
+{
+  "name": "liguangchun/ip",
+  "description": "IP数据库",
+  "keywords": [
+    "liguangchun",
+    "ip"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chaim",
+      "email": "gc@dtapp.net",
+      "homepage": "https://api.dtapp.net"
+    }
+  ],
+  "homepage": "https://www.dtapp.net",
+  "require": {
+    "php": ">=7.0",
+    "ext-iconv": "*",
+    "liguangchun/curl": "^1.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "DtApp\\Ip\\": "src"
+    }
+  },
+  "repositories": {
+    "0": {
+      "type": "composer",
+      "url": "https://packagist.dtapp.net"
+    },
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
+    }
+  }
+}
