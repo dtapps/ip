@@ -175,4 +175,69 @@ class Client
     {
         return (new Lookup())->index();
     }
+
+    /**
+     * 设置未知的返回字段
+     * @param string $unknown
+     * @return QqWry
+     */
+    public function qqWrySetUnknown($unknown = '未知')
+    {
+        return (new QqWry())->setUnknown($unknown);
+    }
+
+    /**
+     * 获取省信息
+     * @param string $ip
+     * @return QqWry
+     * @throws IpException
+     */
+    public function qqWryGetProvince($ip = '')
+    {
+        return (new QqWry())->getProvince($ip);
+    }
+
+    /**
+     * 获取城市信息
+     * @param string $ip
+     * @return QqWry
+     * @throws IpException
+     */
+    public function qqWryGetCity($ip = '')
+    {
+        return (new QqWry())->getCity($ip);
+    }
+
+    /**
+     * 获取地区信息
+     * @param string $ip
+     * @return QqWry
+     * @throws IpException
+     */
+    public function qqWryGetArea($ip = '')
+    {
+        return (new QqWry())->getArea($ip);
+    }
+
+    /**
+     * 获取运营商信息
+     * @param string $ip
+     * @return QqWry
+     * @throws IpException
+     */
+    public function qqWryGetExtend($ip = '')
+    {
+        return (new QqWry())->getExtend($ip);
+    }
+
+    /**
+     * 根据所给 IP 地址或域名返回所在地区信息
+     * @param string $ip
+     * @return QqWry
+     * @throws IpException
+     */
+    public function qqWryGetLocation($ip = '')
+    {
+        return (new QqWry())->getLocation($ip);
+    }
 }

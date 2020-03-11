@@ -36,3 +36,5 @@ var_dump('新浪：', $ip->siNaQueryOnline());
 var_dump('batch：', $ip->internationalIpOnline());
 // Lookup
 var_dump('Lookup：', $ip->lookupIpOnline());
+// qqWry
+var_dump('qqWry：', $ip->qqWryGetLocation());
