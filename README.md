@@ -28,7 +28,9 @@
 - ipip
 
 ## 应用示例
+- [数据应用](https://www.liguangchun.cn/ "数据应用")
 - [数据分析](https://data.liguangchun.cn/ "数据分析")
+- [数据工具](https://tool.liguangchun.cn/ "数据工具")
 - [新型冠状病毒肺炎](https://data.liguangchun.cn/pneumonia/index.html "新型冠状病毒肺炎")
 - [广东省建设项目数据](https://data.liguangchun.cn/gdbuild/index.html "广东省建设项目数据")
 
@@ -44,59 +46,35 @@
 
 ``` json
 {
-  ["location_all"]=>
-  string(18) "广东省深圳市"
-  ["isp"]=>
-  array(1) {
-    ["name"]=>
-    string(6) "电信"
-  }
-  ["ip"]=>
-  array(5) {
-    ["ipv4"]=>
-    string(13) "xx.xxx.xx.230"
-    ["beginip"]=>
-    string(12) "xx.xxx.xxx.0"
-    ["endip"]=>
-    string(13) "xx.xxx.xx.255"
-    ["trueip"]=>
-    int(245043686)
-    ["ipv6"]=>
-    string(39) "0000:0000:0000:0000:0000:xxxx:xxxx:xxxx"
-  }
-  ["province"]=>
-  array(4) {
-    ["name"]=>
-    string(9) "广东省"
-    ["adcode"]=>
-    string(6) "440000"
-    ["lat"]=>
-    float(23.125178)
-    ["lng"]=>
-    float(113.280637)
-  }
-  ["city"]=>
-  array(4) {
-    ["name"]=>
-    string(9) "深圳市"
-    ["adcode"]=>
-    string(6) "440300"
-    ["lat"]=>
-    float(22.547)
-    ["lng"]=>
-    float(114.085947)
-  }
-  ["district"]=>
-  array(4) {
-    ["name"]=>
-    string(6) "未知"
-    ["adcode"]=>
-    string(0) ""
-    ["lat"]=>
-    string(0) ""
-    ["lng"]=>
-    string(0) ""
-  }
+	location_all: "广东省广州市",
+	isp: {
+		name: "广东互联网络交换中心(越秀区东风路305号)"
+	},
+	ip: {
+		ipv4: "210.76.74.180",
+		beginip: "210.76.64.0",
+		endip: "210.76.95.255",
+		trueip: 3528215220,
+		ipv6: "0000:0000:0000:0000:0000:ffff:d24c:4ab4",
+	},
+	province: {
+		name: "广东省",
+		adcode: "440000",
+		lat: 23.125178,
+		lng: 113.280637,
+	},
+	city: {
+		name: "广州市",
+		adcode: "440100",
+		lat: 23.125178,
+		lng: 113.280637,
+	},
+	district: {
+		name: "未知",
+		adcode: "",
+		lat: "",
+		lng: "",
+	},
 }
 ```
 
