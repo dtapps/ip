@@ -13,6 +13,24 @@
 
 1. PHP7.0 版本及以上（低版本和7.4版本未做兼容处理！）
 
+## 支持
+- 纯真数据库
+- 高德地图
+- 淘宝
+- 百度搜索
+- 腾讯地图
+- 太平洋
+- 搜狐
+- 好搜
+- 新浪
+- IP Geolocation
+- extreme-ip
+
+## 应用示例
+- [数据分析][https://data.liguangchun.cn/]
+- [新型冠状病毒肺炎][https://data.liguangchun.cn/pneumonia/index.html]
+- [广东省建设项目数据][https://data.liguangchun.cn/gdbuild/index.html]
+
 ## 使用文档
 
 [文档链接][https://apidoc.liguangchun.cn/web/#/8]
