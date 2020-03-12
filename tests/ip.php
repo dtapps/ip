@@ -37,4 +37,9 @@ var_dump('batch：', $ip->internationalIpOnline());
 // Lookup
 var_dump('Lookup：', $ip->lookupIpOnline());
 // qqWry
-var_dump('qqWry：', $ip->qqWryGetLocation('219.128.77.89'));
+var_dump('qqWry：', $ip->qqWryGetLocation());
+// ipIp
+var_dump('ipip：', $ip->ipIpFind());
+var_dump('ipip：', $ip->ipIpFindMap());
+var_dump('ipip：', $ip->ipIpFindInfo());
+

@@ -8,6 +8,7 @@ namespace DtApp\Ip;
 
 
 use DtApp\Curl\CurlException;
+use Exception;
 
 class Client
 {
@@ -177,61 +178,61 @@ class Client
     }
 
     /**
-     * 设置未知的返回字段
+     * QqWry-设置未知的返回字段
      * @param string $unknown
      * @return QqWry
      */
-    public function qqWrySetUnknown($unknown = '未知')
+    private function qqWrySetUnknown($unknown = '未知')
     {
         return (new QqWry())->setUnknown($unknown);
     }
 
     /**
-     * 获取省信息
+     * QqWry-获取省信息
      * @param string $ip
      * @return QqWry
      * @throws IpException
      */
-    public function qqWryGetProvince($ip = '')
+    private function qqWryGetProvince($ip = '')
     {
         return (new QqWry())->getProvince($ip);
     }
 
     /**
-     * 获取城市信息
+     * QqWry-获取城市信息
      * @param string $ip
      * @return QqWry
      * @throws IpException
      */
-    public function qqWryGetCity($ip = '')
+    private function qqWryGetCity($ip = '')
     {
         return (new QqWry())->getCity($ip);
     }
 
     /**
-     * 获取地区信息
+     * QqWry-获取地区信息
      * @param string $ip
      * @return QqWry
      * @throws IpException
      */
-    public function qqWryGetArea($ip = '')
+    private function qqWryGetArea($ip = '')
     {
         return (new QqWry())->getArea($ip);
     }
 
     /**
-     * 获取运营商信息
+     * QqWry-获取运营商信息
      * @param string $ip
      * @return QqWry
      * @throws IpException
      */
-    public function qqWryGetExtend($ip = '')
+    private function qqWryGetExtend($ip = '')
     {
         return (new QqWry())->getExtend($ip);
     }
 
     /**
-     * 根据所给 IP 地址或域名返回所在地区信息
+     * QqWry-根据所给 IP 地址或域名返回所在地区信息
      * @param string $ip
      * @return QqWry
      * @throws IpException
@@ -239,5 +240,44 @@ class Client
     public function qqWryGetLocation($ip = '')
     {
         return (new QqWry())->getLocation($ip);
+    }
+
+    /**
+     * ipip
+     * @param string $ip
+     * @param string $language
+     * @return array|NULL
+     * @throws Exception
+     */
+    public function ipIpFind($ip = '', $language = 'CN')
+    {
+        if (empty($ip)) $ip = (new Ip())->get();
+        return (new IpIp())->find($ip, $language);
+    }
+
+    /**
+     * ipip
+     * @param string $ip
+     * @param string $language
+     * @return array|false|null
+     * @throws Exception
+     */
+    public function ipIpFindMap($ip = '', $language = 'CN')
+    {
+        if (empty($ip)) $ip = (new Ip())->get();
+        return (new IpIp())->findMap($ip, $language);
+    }
+
+    /**
+     * ipip
+     * @param string $ip
+     * @param string $language
+     * @return IpIpDistrictInfo|null
+     * @throws Exception
+     */
+    public function ipIpFindInfo($ip = '', $language = 'CN')
+    {
+        if (empty($ip)) $ip = (new Ip())->get();
+        return (new IpIp())->findInfo($ip, $language);
     }
 }

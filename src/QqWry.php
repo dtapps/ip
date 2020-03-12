@@ -7,6 +7,8 @@
 namespace DtApp\Ip;
 
 
+use Exception;
+
 class QqWry extends Client
 {
     /**
@@ -390,11 +392,27 @@ class QqWry extends Client
             $location['state'] = $parseData[0];
             $location['city'] = $parseData[1];
             $location['area'] = $parseData[2];
-            $location['trueip'] = ip2long($location['ip']);
-            $location['ipv6'] = $this->getNormalizedIP($location['ip']);
+
+            // 全部地址
+            $res['location_all'] = $location['all'];
+            // 运营商
+            $res['isp']['name'] = $location['extend'];
+            // IP
+            $res['ip']['ipv4'] = $location['ip'];
+            $res['ip']['beginip'] = $location['beginip'];
+            $res['ip']['endip'] = $location['endip'];
+            $res['ip']['trueip'] = ip2long($location['ip']);
+            $res['ip']['ipv6'] = $this->getNormalizedIP($location['ip']);
+            $getAdCodeLatLng = $this->getNameAdCodeLatLng($location['state'], $location['city'], $location['area']);
+            // 省份
+            $res['province'] = $getAdCodeLatLng['province'];
+            // 城市
+            $res['city'] = $getAdCodeLatLng['city'];
+            // 地区
+            $res['district'] = $getAdCodeLatLng['district'];
             $locationData[$ip] = $location;
         }
-        return $locationData[$ip];
+        return $res;
     }
 
     /**
@@ -525,6 +543,84 @@ class QqWry extends Client
             return '0000:0000:0000:0000:0000:ffff:' . $IPParts[1] . $IPParts[2] . ':' . $IPParts[3] . $IPParts[4];
         }
         return '';
+    }
+
+    /**
+     *
+     * @param $province_name
+     * @param $city_name
+     * @param $district_name
+     * @return array
+     */
+    private function getNameAdCodeLatLng($province_name, $city_name, $district_name)
+    {
+        // 名称
+        $province['name'] = $province_name;
+        $city['name'] = $city_name;
+        $district['name'] = $district_name;
+        // adcode
+        $province['adcode'] = '';
+        $city['adcode'] = '';
+        $district['adcode'] = '';
+        // lat
+        $province['lat'] = '';
+        $city['lat'] = '';
+        $district['lat'] = '';
+        // lng
+        $province['lng'] = '';
+        $city['lng'] = '';
+        $district['lng'] = '';
+
+        if (!empty($province_name)) {
+            try {
+                $json_province = json_decode(file_get_contents(__DIR__ . '/../database/province.json'), true);
+                foreach ($json_province['rows'] as $key => $value) {
+                    if ($value['name'] == $province_name) {
+                        $province['name'] = $value['name'];
+                        $province['adcode'] = $value['adcode'];
+                        $province['lat'] = $value['lat'];
+                        $province['lng'] = $value['lng'];
+                    }
+                }
+            } catch (Exception $e) {
+
+            }
+        }
+        if (!empty($city_name)) {
+            try {
+                $json_city = json_decode(file_get_contents(__DIR__ . '/../database/city.json'), true);
+                foreach ($json_city['rows'] as $key => $value) {
+                    if ($value['name'] == $city_name) {
+                        $city['name'] = $value['name'];
+                        $city['adcode'] = $value['adcode'];
+                        $city['lat'] = $value['lat'];
+                        $city['lng'] = $value['lng'];
+                    }
+                }
+            } catch (Exception $e) {
+
+            }
+        }
+        if (!empty($district_name)) {
+            try {
+                $json_district = json_decode(file_get_contents(__DIR__ . '/../database/district.json'), true);
+                foreach ($json_district['rows'] as $key => $value) {
+                    if ($value['name'] == $district_name) {
+                        $district['name'] = $value['name'];
+                        $district['adcode'] = $value['adcode'];
+                        $district['lat'] = $value['lat'];
+                        $district['lng'] = $value['lng'];
+                    }
+                }
+            } catch (Exception $e) {
+
+            }
+        }
+        return [
+            'province' => $province,
+            'city' => $city,
+            'district' => $district
+        ];
     }
 }
 

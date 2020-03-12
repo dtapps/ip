@@ -29,7 +29,7 @@
   "repositories": {
     "0": {
       "type": "composer",
-      "url": "https://packagist.dtapp.net"
+      "url": "https://packagist.liguangchun.cn"
     },
     "packagist": {
       "type": "composer",
