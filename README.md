@@ -1,6 +1,6 @@
-<img align="right" width="100" src="https://cdn.kodo.dtapp.net/2c/be9cfde8e491f2f745f85207a1956b.png" alt="dtApp Logo"/>
+<img align="right" width="100" src="https://cdn.oss.liguangchun.cn/2c/be9cfde8e491f2f745f85207a1956b.png" alt="dtApp Logo"/>
 
-<h1 align="left"><a href="https://www.dtapp.net/">IP数据库</a></h1>
+<h1 align="left"><a href="https://www.liguangchun.cn/">IP数据库</a></h1>
 
 📦 IP数据库 PHP扩展包
 
@@ -15,7 +15,7 @@
 
 ## 使用文档
 
-[文档链接][https://apidoc.dtapp.net/web/#/8]
+[文档链接][https://apidoc.liguangchun.cn/web/#/8]
 
 ## 安装
 
