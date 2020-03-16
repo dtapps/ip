@@ -280,4 +280,24 @@ class Client
         if (empty($ip)) $ip = (new Ip())->get();
         return (new IpIp())->findInfo($ip, $language);
     }
+
+    /**
+     * 网易IP
+     * @return bool|mixed|string
+     * @throws CurlException
+     */
+    public function netEaseIpOnline()
+    {
+        return (new NetEase())->index();
+    }
+
+    /**
+     * 哔哩哔哩IP
+     * @return bool|mixed|string
+     * @throws CurlException
+     */
+    public function biliBiliIpOnline()
+    {
+        return (new BiliBili())->index();
+    }
 }

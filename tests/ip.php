@@ -42,4 +42,8 @@ var_dump('qqWry：', $ip->qqWryGetLocation());
 var_dump('ipip：', $ip->ipIpFind());
 var_dump('ipip：', $ip->ipIpFindMap());
 var_dump('ipip：', $ip->ipIpFindInfo());
+// 网易
+var_dump('163：', $ip->netEaseIpOnline());
+// 哔哩哔哩
+var_dump('bilibili：', $ip->biliBiliIpOnline());
 
