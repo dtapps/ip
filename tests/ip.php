@@ -17,7 +17,7 @@ var_dump('客户端IP：', $ip->getIp());
 // 高德地图
 var_dump('高德地图：', $ip->aliMapOnline());
 // 淘宝
-var_dump('淘宝：', $ip->aliTaoBaoOnline());
+var_dump('淘宝：', $ip->aliTaoBaoOnline('14.155.16.81'));
 // 百度地图
 var_dump('百度地图：', $ip->baIduMapOnline());
 // 百度搜索
