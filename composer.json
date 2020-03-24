@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "DtApp\\Ip\\": "src"
+      "LiGuAngChUn\\Ip\\": "src"
     }
   },
   "repositories": {

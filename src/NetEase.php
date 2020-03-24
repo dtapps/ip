@@ -4,28 +4,23 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
+use DtApp\Curl\Client;
 use DtApp\Curl\CurlException;
 
-class NetEase extends Client
+class NetEase extends BasicIp
 {
-    /**
-     * 163接口
-     * @var string
-     */
-    private $index_url = "https://ipservice.3g.163.com/ip";
-
     /**
      * 网易IP查询接口
      * @return bool|mixed|string
      * @throws CurlException
      */
-    protected function index()
+    public function get()
     {
-        $url = $this->index_url;
-        $curl = new \DtApp\Curl\Client();
+        $url = "https://ipservice.3g.163.com/ip";
+        $curl = new Client();
         return $curl->getHttp($url, '', true);
     }
 }

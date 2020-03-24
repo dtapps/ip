@@ -4,17 +4,19 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
-class IpIp extends Client
+use Exception;
+
+class IpIp extends BasicIp
 {
     public $reader = null;
 
     /**
      * IpIp constructor.
      * @param array $config
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $config = [])
     {
@@ -27,8 +29,9 @@ class IpIp extends Client
      * @param $language
      * @return array|NULL
      */
-    public function find($ip, $language)
+    public function getFind(string $ip = '', string $language = 'CN')
     {
+        if (empty($ip)) $ip = $this->getIp();
         return $this->reader->find($ip, $language);
     }
 
@@ -37,8 +40,9 @@ class IpIp extends Client
      * @param $language
      * @return array|false|null
      */
-    public function findMap($ip, $language)
+    public function getFindMap(string $ip = '', string $language = 'CN')
     {
+        if (empty($ip)) $ip = $this->getIp();
         return $this->reader->findMap($ip, $language);
     }
 
@@ -47,9 +51,10 @@ class IpIp extends Client
      * @param $language
      * @return IpIpDistrictInfo|null
      */
-    public function findInfo($ip, $language)
+    public function getFindInfo(string $ip = '', string $language = 'CN')
     {
-        $map = $this->findMap($ip, $language);
+        if (empty($ip)) $ip = $this->getIp();
+        $map = $this->getFindMap($ip, $language);
         if (NULL === $map) return NUll;
         return new IpIpDistrictInfo($map);
     }

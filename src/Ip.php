@@ -4,20 +4,16 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
-/**
- * IP
- * Class Ip
- * @package DtApp\Ip
- */
-class Ip extends Client
+
+class Ip extends BasicIp
 {
     /**
      * 获取当前客户端IP地址
      * @return mixed|string|null
      */
-    protected function get()
+    public function get()
     {
         $ip = '0.0.0.0';
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {

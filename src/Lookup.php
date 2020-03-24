@@ -4,9 +4,10 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
+use DtApp\Curl\Client;
 use DtApp\Curl\CurlException;
 
 /**
@@ -14,23 +15,17 @@ use DtApp\Curl\CurlException;
  * Class Lookup
  * @package DtApp\Ip
  */
-class Lookup extends Client
+class Lookup extends BasicIp
 {
-    /**
-     * lookup接口
-     * @var string
-     */
-    private $index_url = "https://extreme-ip-lookup.com/json/";
-
     /**
      * lookup
      * @return bool|mixed|string
      * @throws CurlException
      */
-    protected function index()
+    public function get()
     {
-        $url = $this->index_url;
-        $curl = new \DtApp\Curl\Client();
+        $url = "https://extreme-ip-lookup.com/json/";
+        $curl = new Client();
         return $curl->getHttp($url, '', true);
     }
 }

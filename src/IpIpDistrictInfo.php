@@ -4,7 +4,7 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
 class IpIpDistrictInfo

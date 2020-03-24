@@ -4,8 +4,9 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
+use DtApp\Curl\Client;
 use DtApp\Curl\CurlException;
 
 /**
@@ -13,26 +14,19 @@ use DtApp\Curl\CurlException;
  * Class So
  * @package DtApp\Ip
  */
-class So extends Client
+class So extends BasicIp
 {
-    /**
-     * 好搜接口
-     * @var string
-     */
-    private $onebox_url = "https://open.onebox.so.com/dataApi";
-
     /**
      * 好搜
      * @param string $ip IP地址
      * @return bool|mixed|string
-     * @throws IpException
      * @throws CurlException
      */
-    protected function onebox(string $ip = '')
+    public function getOneBox(string $ip = '')
     {
-        if (empty($ip)) throw new IpException('IP地址不能为空');
-        $url = $this->onebox_url . "?type=ip&src=onebox&tpl=0&num=1&query=ip&ip={$ip}&url=ip";
-        $curl = new \DtApp\Curl\Client();
+        if (empty($ip)) $ip = $this->getIp();
+        $url = "https://open.onebox.so.com/dataApi?type=ip&src=onebox&tpl=0&num=1&query=ip&ip={$ip}&url=ip";
+        $curl = new Client();
         return $curl->getHttp($url, '', true);
     }
 }

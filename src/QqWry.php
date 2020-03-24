@@ -4,12 +4,12 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
 use Exception;
 
-class QqWry extends Client
+class QqWry extends BasicIp
 {
     /**
      * QQWry.Dat文件指针
@@ -254,7 +254,7 @@ class QqWry extends Client
      * @param string $unknown
      * @return self
      */
-    protected function setUnknown($unknown = '未知')
+    public function setUnknown(string $unknown = '未知')
     {
         $this->unknown = $unknown;
         return $this;
@@ -266,7 +266,7 @@ class QqWry extends Client
      * @return mixed
      * @throws IpException
      */
-    protected function getProvince($ip = '')
+    public function getProvince(string $ip = '')
     {
         return $this->getLocation($ip)['state'];
     }
@@ -277,7 +277,7 @@ class QqWry extends Client
      * @return mixed
      * @throws IpException
      */
-    protected function getCity($ip = '')
+    public function getCity(string $ip = '')
     {
         return $this->getLocation($ip)['city'];
     }
@@ -288,7 +288,7 @@ class QqWry extends Client
      * @return mixed
      * @throws IpException
      */
-    protected function getArea($ip = '')
+    public function getArea(string $ip = '')
     {
         return $this->getLocation($ip)['area'];
     }
@@ -299,7 +299,7 @@ class QqWry extends Client
      * @return mixed
      * @throws IpException
      */
-    protected function getExtend($ip = '')
+    public function getExtend(string $ip = '')
     {
         return $this->getLocation($ip)['extend'];
     }
@@ -310,7 +310,7 @@ class QqWry extends Client
      * @return mixed|null
      * @throws IpException
      */
-    protected function getLocation($ip = '')
+    public function getLocation(string $ip = '')
     {
         if (empty($ip)) $ip = $this->getIp();
         if (strpos($ip, 'http://') === 0) {
@@ -546,7 +546,7 @@ class QqWry extends Client
     }
 
     /**
-     *
+     * 解析CODE
      * @param $province_name
      * @param $city_name
      * @param $district_name

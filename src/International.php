@@ -4,9 +4,10 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
+use DtApp\Curl\Client;
 use DtApp\Curl\CurlException;
 
 /**
@@ -14,24 +15,18 @@ use DtApp\Curl\CurlException;
  * Class International
  * @package DtApp\Ip
  */
-class International extends Client
+class International extends BasicIp
 {
-    /**
-     * batch接口
-     * @var string
-     */
-    private $index_url = "http://ip-api.com/json/";
-
     /**
      * batch
      * @param string $lang 语言
      * @return bool|mixed|string
      * @throws CurlException
      */
-    protected function index($lang = 'zh-CN')
+    public function get(string $lang = 'zh-CN')
     {
-        $url = $this->index_url . "?lang={$lang}";
-        $curl = new \DtApp\Curl\Client();
+        $url = "http://ip-api.com/json/?lang={$lang}";
+        $curl = new Client();
         return $curl->getHttp($url, '', true);
     }
 }

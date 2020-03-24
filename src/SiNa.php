@@ -4,7 +4,7 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
 
 use DtApp\Curl\CurlException;
@@ -14,25 +14,18 @@ use DtApp\Curl\CurlException;
  * Class SiNa
  * @package DtApp\Ip
  */
-class SiNa extends Client
+class SiNa extends BasicIp
 {
-    /**
-     * 新浪接口
-     * @var string
-     */
-    private $query_url = "http://ip.ws.126.net/ipquery";
-
     /**
      * 新浪
      * @param string $ip IP地址
      * @return bool|false|mixed|string|string[]
      * @throws CurlException
-     * @throws IpException
      */
-    protected function query($ip = '')
+    public function get(string $ip = '')
     {
-        if (empty($ip)) throw new IpException('IP地址不能为空');
-        $url = $this->query_url . "?ip={$ip}";
+        if (empty($ip)) $ip = $this->getIp();
+        $url = "http://ip.ws.126.net/ipquery?ip={$ip}";
         $curl = new \DtApp\Curl\Client();
         $res = $curl->getHttp($url, '', false);
         $res = iconv('gbk', 'utf-8', $res);

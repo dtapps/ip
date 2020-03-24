@@ -4,8 +4,9 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
+use DtApp\Curl\Client;
 use DtApp\Curl\CurlException;
 
 /**
@@ -13,22 +14,16 @@ use DtApp\Curl\CurlException;
  * Class SoHu
  * @package DtApp\Ip
  */
-class SoHu extends Client
+class SoHu extends BasicIp
 {
-    /**
-     * 搜狐接口
-     * @var string
-     */
-    private $index_url = "http://pv.sohu.com/cityjson";
-
     /**
      * 搜狐
      * @throws CurlException
      */
-    protected function index()
+    public function get()
     {
-        $url = $this->index_url . "?ie=utf-8";
-        $curl = new \DtApp\Curl\Client();
+        $url = "http://pv.sohu.com/cityjson?ie=utf-8";
+        $curl = new Client();
         $res = $curl->getHttp($url, '', false);
         $res = str_replace("var returnCitySN = ", "", $res);
         $res = substr($res, 0, -1);

@@ -4,8 +4,9 @@
  */
 
 
-namespace DtApp\Ip;
+namespace LiGuAngChUn\Ip;
 
+use DtApp\Curl\Client;
 use DtApp\Curl\CurlException;
 
 /**
@@ -13,25 +14,19 @@ use DtApp\Curl\CurlException;
  * Class PConLine
  * @package DtApp\Ip
  */
-class PConLine extends Client
+class PConLine extends BasicIp
 {
-    /**
-     * 太平洋接口
-     * @var string
-     */
-    private $index_url = "http://whois.pconline.com.cn/ipJson.jsp";
-
     /**
      * 太平洋
      * @param string $ip IP地址
      * @return bool|false|mixed|string
      * @throws CurlException
      */
-    protected function index($ip = '')
+    public function get(string $ip = '')
     {
-        $url = $this->index_url . "?json=true";
-        if (!empty($ip)) $url = $this->index_url . "?json=true&ip={$ip}";
-        $curl = new \DtApp\Curl\Client();
+        $url = "http://whois.pconline.com.cn/ipJson.jsp?json=true";
+        if (!empty($ip)) $url = "http://whois.pconline.com.cn/ipJson.jsp?json=true&ip={$ip}";
+        $curl = new Client();
         $res = $curl->getHttp($url, '', false);
         preg_match('/{.+}/', $res, $res);
         $res = iconv('gbk', 'utf-8', $res[0]);

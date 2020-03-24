@@ -3,47 +3,73 @@
  * (c) Chaim <gc@dtapp.net>
  */
 
-use DtApp\Ip\Client;
-
 require_once '../vendor/autoload.php';
 
-$ip = new Client([
-    'gddt_key' => '',
-    'bddt_ak' => '',
-    'txdt_key' => '',
-]);
+$config = [
+    'gddt_key' => '', // 请求服务权限标识 高德地图
+    'bddt_ak' => '', // 开发者密钥 百度地图
+    'txdt_key' => '', // 开发密钥 腾讯地图
+];
+
 // 获取当前客户端IP地址
-var_dump('客户端IP：', $ip->getIp());
+$ip = new LiGuAngChUn\Ip\Ip();
+var_dump('客户端IP：', $ip->get());
+
 // 高德地图
-var_dump('高德地图：', $ip->aliMapOnline());
+$ali = new LiGuAngChUn\Ip\Ali($config);
+var_dump('高德地图：', $ali->getMap());
 // 淘宝
-var_dump('淘宝：', $ip->aliTaoBaoOnline('14.155.16.81'));
+var_dump('淘宝：', $ali->getTaoBao());
+
 // 百度地图
-var_dump('百度地图：', $ip->baIduMapOnline());
+$baidu = new LiGuAngChUn\Ip\BaIdu($config);
+var_dump('百度地图：', $baidu->getMap());
 // 百度搜索
-var_dump('百度搜索：', $ip->baIduSearchOnline());
+var_dump('百度搜索：', $baidu->getSearch());
+
 // 腾讯地图
-var_dump('腾讯地图：', $ip->tenCentMapOnline());
+$tencent = new LiGuAngChUn\Ip\TenCent($config);
+var_dump('腾讯地图：', $tencent->getMap());
+
 // 太平洋
-var_dump('太平洋：', $ip->pConLineIpOnline());
+$pconline = new LiGuAngChUn\Ip\PConLine();
+var_dump('太平洋：', $pconline->get());
+
 // 搜狐
-var_dump('搜狐：', $ip->soHuIpOnline());
+$sohu = new LiGuAngChUn\Ip\SoHu();
+var_dump('搜狐：', $sohu->get());
+
 // 好搜
-var_dump('好搜：', $ip->soOneBoxOnline());
+$so = new LiGuAngChUn\Ip\So();
+var_dump('好搜：', $so->getOneBox());
+
 // 新浪
-var_dump('新浪：', $ip->siNaQueryOnline());
+$sina = new LiGuAngChUn\Ip\SiNa();
+var_dump('新浪：', $sina->get());
+
 // batch
-var_dump('batch：', $ip->internationalIpOnline());
+$international = new LiGuAngChUn\Ip\International();
+var_dump('batch：', $international->get());
+
 // Lookup
-var_dump('Lookup：', $ip->lookupIpOnline());
+$lookup = new LiGuAngChUn\Ip\Lookup();
+var_dump('Lookup：', $lookup->get());
+
 // qqWry
-var_dump('qqWry：', $ip->qqWryGetLocation());
+$qqwry = new LiGuAngChUn\Ip\QqWry();
+var_dump('qqWry：', $qqwry->getLocation());
+
 // ipIp
-var_dump('ipip：', $ip->ipIpFind());
-var_dump('ipip：', $ip->ipIpFindMap());
-var_dump('ipip：', $ip->ipIpFindInfo());
+$ipip = new LiGuAngChUn\Ip\IpIp();
+var_dump('ipip：', $ipip->getFind());
+var_dump('ipip：', $ipip->getFindMap());
+var_dump('ipip：', $ipip->getFindInfo());
+
 // 网易
-var_dump('163：', $ip->netEaseIpOnline());
+$netease = new LiGuAngChUn\Ip\NetEase();
+var_dump('163：', $netease->get());
+
 // 哔哩哔哩
-var_dump('bilibili：', $ip->biliBiliIpOnline());
+$bilibili = new LiGuAngChUn\Ip\BiliBili();
+var_dump('bilibili：', $bilibili->get());
 
