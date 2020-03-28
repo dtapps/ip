@@ -11,10 +11,10 @@
     {
       "name": "Chaim",
       "email": "gc@dtapp.net",
-      "homepage": "https://api.dtapp.net"
+      "homepage": "https://api.liguangchun.cn"
     }
   ],
-  "homepage": "https://www.dtapp.net",
+  "homepage": "https://www.liguangchun.cn",
   "require": {
     "php": ">=7.0",
     "ext-iconv": "*",
