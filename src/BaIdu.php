@@ -7,9 +7,14 @@
 namespace LiGuAngChUn\Ip;
 
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
+/**
+ * 百度
+ * Class BaIdu
+ * @package LiGuAngChUn\Ip
+ */
 class BaIdu extends BasicIp
 {
     /**
@@ -23,12 +28,12 @@ class BaIdu extends BasicIp
      */
     public function getMap(string $ip = '', string $coor = 'bd09ll')
     {
-        if (empty($this->config->get('bddt_ak'))) throw new IpException('开发者密钥不能为空');
+        if (empty($this->config->get('bd_dt_key'))) throw new IpException('开发者密钥不能为空');
         if (empty($ip)) $ip = $this->getIp();
-        $url = "https://api.map.baidu.com/location/ip?ak={$this->config->get('bddt_ak')}&coor={$coor}";
-        if (!empty($ip)) $url = "https://api.map.baidu.com/location/ip?ak={$this->config->get('bddt_ak')}&ip={$ip}&coor={$coor}";
-        $curl = new Client();
-        return $curl->getHttp($url, '', true);
+        $url = "https://api.map.baidu.com/location/ip?ak={$this->config->get('bd_dt_key')}&coor={$coor}";
+        if (!empty($ip)) $url = "https://api.map.baidu.com/location/ip?ak={$this->config->get('bd_dt_key')}&ip={$ip}&coor={$coor}";
+        $get = new Get();
+        return $get->http($url, '', true);
     }
 
     /**
@@ -41,8 +46,8 @@ class BaIdu extends BasicIp
     {
         if (empty($ip)) $ip = $this->getIp();
         $url = "https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={$ip}&co=&resource_id=6006&ie=utf8&oe=utf8&cb=json";
-        $curl = new Client();
-        $res = $curl->getHttp($url, '', false);
+        $get = new Get();
+        $res = $get->http($url, '', false);
         $res = str_replace("/**/json", "", $res);
         $res = substr($res, 1);
         $res = substr($res, 0, -2);

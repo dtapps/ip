@@ -6,12 +6,11 @@
 
 namespace LiGuAngChUn\Ip;
 
-
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
 /**
- * lookup在线接口
+ * lookup
  * Class Lookup
  * @package DtApp\Ip
  */
@@ -25,7 +24,7 @@ class Lookup extends BasicIp
     public function get()
     {
         $url = "https://extreme-ip-lookup.com/json/";
-        $curl = new Client();
-        return $curl->getHttp($url, '', true);
+        $get = new Get();
+        return $get->http($url, '', true);
     }
 }

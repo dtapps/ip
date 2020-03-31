@@ -6,10 +6,14 @@
 
 namespace LiGuAngChUn\Ip;
 
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
-
+/**
+ * 哔哩哔哩
+ * Class BiliBili
+ * @package LiGuAngChUn\Ip
+ */
 class BiliBili extends BasicIp
 {
     /**
@@ -20,7 +24,7 @@ class BiliBili extends BasicIp
     public function get()
     {
         $url = "https://api.bilibili.com/x/web-interface/zone";
-        $curl = new Client();
-        return $curl->getHttp($url, '', true);
+        $get = new Get();
+        return $get->http($url, '', true);
     }
 }

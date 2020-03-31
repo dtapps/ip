@@ -7,9 +7,14 @@
 namespace LiGuAngChUn\Ip;
 
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
+/**
+ * 网易
+ * Class NetEase
+ * @package LiGuAngChUn\Ip
+ */
 class NetEase extends BasicIp
 {
     /**
@@ -20,7 +25,7 @@ class NetEase extends BasicIp
     public function get()
     {
         $url = "https://ipservice.3g.163.com/ip";
-        $curl = new Client();
-        return $curl->getHttp($url, '', true);
+        $get = new Get();
+        return $get->http($url, '', true);
     }
 }

@@ -6,11 +6,11 @@
 
 namespace LiGuAngChUn\Ip;
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
 /**
- * 搜狐在线接口
+ * 搜狐
  * Class SoHu
  * @package DtApp\Ip
  */
@@ -23,8 +23,8 @@ class SoHu extends BasicIp
     public function get()
     {
         $url = "http://pv.sohu.com/cityjson?ie=utf-8";
-        $curl = new Client();
-        $res = $curl->getHttp($url, '', false);
+        $get = new Get();
+        $res = $get->http($url, '', false);
         $res = str_replace("var returnCitySN = ", "", $res);
         $res = substr($res, 0, -1);
         $res = json_decode($res, true);

@@ -7,8 +7,8 @@
 namespace LiGuAngChUn\Ip;
 
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
 /**
  * 国际接口
@@ -26,7 +26,7 @@ class International extends BasicIp
     public function get(string $lang = 'zh-CN')
     {
         $url = "http://ip-api.com/json/?lang={$lang}";
-        $curl = new Client();
-        return $curl->getHttp($url, '', true);
+        $get = new Get();
+        return $get->http($url, '', true);
     }
 }

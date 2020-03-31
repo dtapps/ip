@@ -6,11 +6,11 @@
 
 namespace LiGuAngChUn\Ip;
 
-
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
 /**
- * 新浪在线接口
+ * 新浪
  * Class SiNa
  * @package DtApp\Ip
  */
@@ -26,8 +26,8 @@ class SiNa extends BasicIp
     {
         if (empty($ip)) $ip = $this->getIp();
         $url = "http://ip.ws.126.net/ipquery?ip={$ip}";
-        $curl = new \DtApp\Curl\Client();
-        $res = $curl->getHttp($url, '', false);
+        $get = new Get();
+        $res = $get->http($url, '', false);
         $res = iconv('gbk', 'utf-8', $res);
         $res = substr($res, strpos($res, "{"));
         $res = substr($res, 0, -2);

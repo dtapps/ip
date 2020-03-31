@@ -6,11 +6,11 @@
 
 namespace LiGuAngChUn\Ip;
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
 /**
- * 好搜在线接口
+ * 好搜
  * Class So
  * @package DtApp\Ip
  */
@@ -26,7 +26,7 @@ class So extends BasicIp
     {
         if (empty($ip)) $ip = $this->getIp();
         $url = "https://open.onebox.so.com/dataApi?type=ip&src=onebox&tpl=0&num=1&query=ip&ip={$ip}&url=ip";
-        $curl = new Client();
-        return $curl->getHttp($url, '', true);
+        $get = new Get();
+        return $get->http($url, '', true);
     }
 }

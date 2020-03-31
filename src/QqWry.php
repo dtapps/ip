@@ -9,6 +9,11 @@ namespace LiGuAngChUn\Ip;
 
 use Exception;
 
+/**
+ * 纯真数据库
+ * Class QqWry
+ * @package LiGuAngChUn\Ip
+ */
 class QqWry extends BasicIp
 {
     /**

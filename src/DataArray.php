@@ -9,6 +9,11 @@ namespace LiGuAngChUn\Ip;
 
 use ArrayAccess;
 
+/**
+ * 数据
+ * Class DataArray
+ * @package LiGuAngChUn\Ip
+ */
 class DataArray implements ArrayAccess
 {
     /**
@@ -54,9 +59,7 @@ class DataArray implements ArrayAccess
      */
     public function merge(array $data, $append = false)
     {
-        if ($append) {
-            return $this->config = array_merge($this->config, $data);
-        }
+        if ($append) return $this->config = array_merge($this->config, $data);
         return array_merge($this->config, $data);
     }
 
@@ -67,11 +70,8 @@ class DataArray implements ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        if (is_null($offset)) {
-            $this->config[] = $value;
-        } else {
-            $this->config[$offset] = $value;
-        }
+        if (is_null($offset)) $this->config[] = $value;
+        $this->config[$offset] = $value;
     }
 
     /**
@@ -90,11 +90,8 @@ class DataArray implements ArrayAccess
      */
     public function offsetUnset($offset = null)
     {
-        if (is_null($offset)) {
-            $this->config = [];
-        } else {
-            unset($this->config[$offset]);
-        }
+        if (is_null($offset)) $this->config = [];
+        unset($this->config[$offset]);
     }
 
     /**
@@ -104,9 +101,7 @@ class DataArray implements ArrayAccess
      */
     public function offsetGet($offset = null)
     {
-        if (is_null($offset)) {
-            return $this->config;
-        }
+        if (is_null($offset)) return $this->config;
         return isset($this->config[$offset]) ? $this->config[$offset] : null;
     }
 }

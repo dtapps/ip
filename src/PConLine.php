@@ -6,11 +6,11 @@
 
 namespace LiGuAngChUn\Ip;
 
-use DtApp\Curl\Client;
-use DtApp\Curl\CurlException;
+use LiGuAngChUn\Curl\CurlException;
+use LiGuAngChUn\Curl\Get;
 
 /**
- * 太平洋在线接口
+ * 太平洋
  * Class PConLine
  * @package DtApp\Ip
  */
@@ -26,8 +26,8 @@ class PConLine extends BasicIp
     {
         $url = "http://whois.pconline.com.cn/ipJson.jsp?json=true";
         if (!empty($ip)) $url = "http://whois.pconline.com.cn/ipJson.jsp?json=true&ip={$ip}";
-        $curl = new Client();
-        $res = $curl->getHttp($url, '', false);
+        $get = new Get();
+        $res = $get->http($url, '', false);
         preg_match('/{.+}/', $res, $res);
         $res = iconv('gbk', 'utf-8', $res[0]);
         $res = json_decode($res, true);

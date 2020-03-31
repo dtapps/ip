@@ -6,7 +6,11 @@
 
 namespace LiGuAngChUn\Ip;
 
-
+/**
+ * 客户端
+ * Class Ip
+ * @package LiGuAngChUn\Ip
+ */
 class Ip extends BasicIp
 {
     /**
