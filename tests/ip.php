@@ -9,7 +9,7 @@ $config = [
     'ali_gd_key' => '', // 阿里 请求服务权限标识 高德地图
     'bd_dt_key' => '', // 百度 开发者密钥 百度地图
     'tx_dt_key' => '', // 腾讯 开发密钥 腾讯地图
-    'ali_appcode' => '0ff6209a6a994219a4ec1c02f99d7796', // 阿里 阿里云接口appcode
+    'ali_appcode' => '', // 阿里 阿里云接口appcode
 ];
 
 // 获取当前客户端IP地址
