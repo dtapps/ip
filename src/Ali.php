@@ -49,4 +49,40 @@ class Ali extends BasicIp
         $curl = new Client();
         return $curl->getHttp($url, '', true);
     }
+
+    /**
+     * 阿里云
+     * @param string $ip
+     * @return bool|mixed|string
+     * @throws IpException
+     */
+    public function getCloud(string $ip = '')
+    {
+        if (empty($ip)) $ip = $this->getIp();
+        $host = "http://iploc.market.alicloudapi.com";
+        $path = "/v3/ip";
+        $method = "GET";
+        $appcode = $this->config->get('ali_appcode');
+        if (empty($appcode)) throw new IpException('请检查阿里-阿里云配置信息 appcode');
+        $headers = array();
+        array_push($headers, "Authorization:APPCODE " . $appcode);
+        $querys = "ip={$ip}";
+        $bodys = "";
+        $url = $host . $path . "?" . $querys;
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_FAILONERROR, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        if (1 == strpos("$" . $host, "https://")) {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        }
+        $content = curl_exec($curl);
+        curl_close($curl);
+        return json_decode($content, true);
+    }
 }
