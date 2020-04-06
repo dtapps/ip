@@ -1,11 +1,6 @@
 <?php
-/**
- * (c) Chaim <gc@dtapp.net>
- */
-
 
 namespace LiGuAngChUn\Ip;
-
 
 use Exception;
 

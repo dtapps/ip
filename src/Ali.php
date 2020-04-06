@@ -1,14 +1,22 @@
 <?php
-/**
- * (c) Chaim <gc@dtapp.net>
- */
 
+// +----------------------------------------------------------------------
+// | IP数据库
+// +----------------------------------------------------------------------
+// | 版权所有 2017~2020 [ https://www.dtapp.net ]
+// +----------------------------------------------------------------------
+// | 官方网站: https://gitee.com/liguangchun/ip
+// +----------------------------------------------------------------------
+// | 开源协议 ( https://mit-license.org )
+// +----------------------------------------------------------------------
+// | gitee 仓库地址 ：https://gitee.com/liguangchun/ip
+// | github 仓库地址 ：https://github.com/GC0202/ip
+// | Packagist 地址 ：https://packagist.org/packages/liguangchun/ip
+// +----------------------------------------------------------------------
 
 namespace LiGuAngChUn\Ip;
 
-
 use LiGuAngChUn\Curl\CurlException;
-use LiGuAngChUn\Curl\Get;
 
 /**
  * 阿里
@@ -32,8 +40,7 @@ class Ali extends BasicIp
         if (empty($ip)) $ip = $this->getIp();
         $url = "https://restapi.amap.com/v3/ip?parameters&key={$this->config->get('ali_gd_key')}&output={$output}";
         if (!empty($ip)) $url = "https://restapi.amap.com/v3/ip?key={$this->config->get('ali_gd_key')}&ip={$ip}&output={$output}";
-        $get = new Get();
-        return $get->http($url, '', true);
+        return $this->getHttp($url, '', true);
     }
 
     /**
@@ -46,8 +53,7 @@ class Ali extends BasicIp
     {
         if (empty($ip)) $ip = $this->getIp();
         $url = "http://ip.taobao.com/service/getIpInfo.php?ip={$ip}";
-        $get = new Get();
-        return $get->http($url, '', true);
+        return $this->getHttp($url, '', true);
     }
 
     /**

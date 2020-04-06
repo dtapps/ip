@@ -1,20 +1,15 @@
 <?php
-/**
- * (c) Chaim <gc@dtapp.net>
- */
-
 
 namespace LiGuAngChUn\Ip;
-
 
 class IpIpReader
 {
     const IPV4 = 1;
     const IPV6 = 2;
 
-    private $file       = NULL;
-    private $fileSize   = 0;
-    private $nodeCount  = 0;
+    private $file = NULL;
+    private $fileSize = 0;
+    private $nodeCount = 0;
     private $nodeOffset = 0;
 
     private $meta = [];
@@ -35,18 +30,15 @@ class IpIpReader
 
     private function init()
     {
-        if (is_readable($this->database) === FALSE)
-        {
+        if (is_readable($this->database) === FALSE) {
             throw new \InvalidArgumentException("The IP Database file \"{$this->database}\" does not exist or is not readable.");
         }
         $this->file = @fopen($this->database, 'rb');
-        if ($this->file === FALSE)
-        {
+        if ($this->file === FALSE) {
             throw new \InvalidArgumentException("IP Database File opening \"{$this->database}\".");
         }
         $this->fileSize = @filesize($this->database);
-        if ($this->fileSize === FALSE)
-        {
+        if ($this->fileSize === FALSE) {
             throw new \UnexpectedValueException("Error determining the size of \"{$this->database}\".");
         }
 
@@ -55,14 +47,12 @@ class IpIpReader
 
         $this->meta = json_decode($text, 1);
 
-        if (isset($this->meta['fields']) === FALSE || isset($this->meta['languages']) === FALSE)
-        {
+        if (isset($this->meta['fields']) === FALSE || isset($this->meta['languages']) === FALSE) {
             throw new \Exception('IP Database metadata error.');
         }
 
         $fileSize = 4 + $metaLength + $this->meta['total_size'];
-        if ($fileSize != $this->fileSize)
-        {
+        if ($fileSize != $this->fileSize) {
             throw  new \Exception('IP Database size error.');
         }
 
@@ -77,45 +67,35 @@ class IpIpReader
      */
     public function find($ip, $language)
     {
-        if (is_resource($this->file) === FALSE)
-        {
+        if (is_resource($this->file) === FALSE) {
             throw new \BadMethodCallException('IPIP DB closed.');
         }
 
-        if (isset($this->meta['languages'][$language]) === FALSE)
-        {
+        if (isset($this->meta['languages'][$language]) === FALSE) {
             throw new \InvalidArgumentException("language : {$language} not support.");
         }
 
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6) === FALSE)
-        {
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6) === FALSE) {
             throw new \InvalidArgumentException("The value \"$ip\" is not a valid IP address.");
         }
 
-        if (strpos($ip, '.') !== FALSE && !$this->supportV4())
-        {
+        if (strpos($ip, '.') !== FALSE && !$this->supportV4()) {
             throw new \InvalidArgumentException("The Database not support IPv4 address.");
-        }
-        elseif (strpos($ip, ':') !== FALSE && !$this->supportV6())
-        {
+        } elseif (strpos($ip, ':') !== FALSE && !$this->supportV6()) {
             throw new \InvalidArgumentException("The Database not support IPv6 address.");
         }
 
-        try
-        {
+        try {
             $node = $this->findNode($ip);
 
-            if ($node > 0)
-            {
+            if ($node > 0) {
                 $data = $this->resolve($node);
 
                 $values = explode("\t", $data);
 
                 return array_slice($values, $this->meta['languages'][$language], count($this->meta['fields']));
             }
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             return NULL;
         }
 
@@ -125,8 +105,7 @@ class IpIpReader
     public function findMap($ip, $language)
     {
         $array = $this->find($ip, $language);
-        if (NULL === $array)
-        {
+        if (NULL === $array) {
             return NULL;
         }
 
@@ -148,63 +127,45 @@ class IpIpReader
         $key = substr($binary, 0, 2);
         $node = 0;
         $index = 0;
-        if ($bitCount === 32)
-        {
-            if ($this->v4offset === 0)
-            {
-                for ($i = 0; $i < 96 && $node < $this->nodeCount; $i++)
-                {
-                    if ($i >= 80)
-                    {
+        if ($bitCount === 32) {
+            if ($this->v4offset === 0) {
+                for ($i = 0; $i < 96 && $node < $this->nodeCount; $i++) {
+                    if ($i >= 80) {
                         $idx = 1;
-                    }
-                    else
-                    {
+                    } else {
                         $idx = 0;
                     }
                     $node = $this->readNode($node, $idx);
-                    if ($node > $this->nodeCount)
-                    {
+                    if ($node > $this->nodeCount) {
                         return 0;
                     }
                 }
                 $this->v4offset = $node;
-            }
-            else
-            {
+            } else {
                 $node = $this->v4offset;
             }
-        }
-        else
-        {
-            if (isset($this->v6offsetCache[$key]))
-            {
+        } else {
+            if (isset($this->v6offsetCache[$key])) {
                 $index = 16;
                 $node = $this->v6offsetCache[$key];
             }
         }
 
-        for ($i = $index; $i < $bitCount; $i++)
-        {
-            if ($node >= $this->nodeCount)
-            {
+        for ($i = $index; $i < $bitCount; $i++) {
+            if ($node >= $this->nodeCount) {
                 break;
             }
 
             $node = $this->readNode($node, 1 & ((0xFF & ord($binary[$i >> 3])) >> 7 - ($i % 8)));
 
-            if ($i == 15)
-            {
+            if ($i == 15) {
                 $this->v6offsetCache[$key] = $node;
             }
         }
 
-        if ($node === $this->nodeCount)
-        {
+        if ($node === $this->nodeCount) {
             return 0;
-        }
-        elseif ($node > $this->nodeCount)
-        {
+        } elseif ($node > $this->nodeCount) {
             return $node;
         }
 
@@ -230,8 +191,7 @@ class IpIpReader
     private function resolve($node)
     {
         $resolved = $node - $this->nodeCount + $this->nodeCount * 8;
-        if ($resolved >= $this->fileSize)
-        {
+        if ($resolved >= $this->fileSize) {
             return NULL;
         }
 
@@ -245,8 +205,7 @@ class IpIpReader
 
     public function close()
     {
-        if (is_resource($this->file) === TRUE)
-        {
+        if (is_resource($this->file) === TRUE) {
             fclose($this->file);
         }
     }
@@ -260,13 +219,10 @@ class IpIpReader
      */
     private function read($stream, $offset, $length)
     {
-        if ($length > 0)
-        {
-            if (fseek($stream, $offset + $this->nodeOffset) === 0)
-            {
+        if ($length > 0) {
+            if (fseek($stream, $offset + $this->nodeOffset) === 0) {
                 $value = fread($stream, $length);
-                if (strlen($value) === $length)
-                {
+                if (strlen($value) === $length) {
                     return $value;
                 }
             }

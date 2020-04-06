@@ -1,14 +1,22 @@
 <?php
-/**
- * (c) Chaim <gc@dtapp.net>
- */
 
+// +----------------------------------------------------------------------
+// | IP数据库
+// +----------------------------------------------------------------------
+// | 版权所有 2017~2020 [ https://www.dtapp.net ]
+// +----------------------------------------------------------------------
+// | 官方网站: https://gitee.com/liguangchun/ip
+// +----------------------------------------------------------------------
+// | 开源协议 ( https://mit-license.org )
+// +----------------------------------------------------------------------
+// | gitee 仓库地址 ：https://gitee.com/liguangchun/ip
+// | github 仓库地址 ：https://github.com/GC0202/ip
+// | Packagist 地址 ：https://packagist.org/packages/liguangchun/ip
+// +----------------------------------------------------------------------
 
 namespace LiGuAngChUn\Ip;
 
-
 use LiGuAngChUn\Curl\CurlException;
-use LiGuAngChUn\Curl\Get;
 
 /**
  * 百度
@@ -32,8 +40,7 @@ class BaIdu extends BasicIp
         if (empty($ip)) $ip = $this->getIp();
         $url = "https://api.map.baidu.com/location/ip?ak={$this->config->get('bd_dt_key')}&coor={$coor}";
         if (!empty($ip)) $url = "https://api.map.baidu.com/location/ip?ak={$this->config->get('bd_dt_key')}&ip={$ip}&coor={$coor}";
-        $get = new Get();
-        return $get->http($url, '', true);
+        return $this->getHttp($url, '', true);
     }
 
     /**
@@ -46,8 +53,7 @@ class BaIdu extends BasicIp
     {
         if (empty($ip)) $ip = $this->getIp();
         $url = "https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query={$ip}&co=&resource_id=6006&ie=utf8&oe=utf8&cb=json";
-        $get = new Get();
-        $res = $get->http($url, '', false);
+        $res = $this->getHttp($url, '', false);
         $res = str_replace("/**/json", "", $res);
         $res = substr($res, 1);
         $res = substr($res, 0, -2);
