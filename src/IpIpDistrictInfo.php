@@ -1,6 +1,6 @@
 <?php
 
-namespace LiGuAngChUn\Ip;
+namespace DtApp\Ip;
 
 class IpIpDistrictInfo
 {

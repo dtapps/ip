@@ -1,6 +1,6 @@
 <img align="right" width="100" src="https://cdn.oss.liguangchun.cn/04/999e9f2f06d396968eacc10ce9bc8a.png" alt="dtApp Logo"/>
 
-<h1 align="left"><a href="https://www.liguangchun.cn/">IP数据库</a></h1>
+<h1 align="left"><a href="https://www.dtapp.net/">IP数据库</a></h1>
 
 📦 IP数据库 PHP扩展包
 
@@ -40,15 +40,15 @@
 - 阿里云
 
 ## 应用示例
-- [数据应用](https://www.liguangchun.cn/ "数据应用")
-- [数据分析](https://data.liguangchun.cn/ "数据分析")
-- [数据工具](https://tool.liguangchun.cn/ "数据工具")
-- [新型冠状病毒肺炎](https://data.liguangchun.cn/pneumonia/index.html "新型冠状病毒肺炎")
-- [广东省建设项目数据](https://data.liguangchun.cn/gdbuild/index.html "广东省建设项目数据")
+- [数据应用](https://www.dtapp.net/ "数据应用")
+- [数据分析](https://data.dtapp.net/ "数据分析")
+- [数据工具](https://tool.dtapp.net/ "数据工具")
+- [新型冠状病毒肺炎](https://data.dtapp.net/pneumonia/index.html "新型冠状病毒肺炎")
+- [广东省建设项目数据](https://data.dtapp.net/gdbuild/index.html "广东省建设项目数据")
 
 ## 使用文档
 
-[文档链接](https://apidoc.liguangchun.cn/web/#/8 "文档链接")
+[文档链接](https://apidoc.dtapp.net/web/#/8 "文档链接")
 
 ## 计划支持
 - 纯真数据库运营商优化

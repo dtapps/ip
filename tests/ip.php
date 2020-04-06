@@ -5,14 +5,29 @@
 // +----------------------------------------------------------------------
 // | 版权所有 2017~2020 [ https://www.dtapp.net ]
 // +----------------------------------------------------------------------
-// | 官方网站: https://gitee.com/liguangchun/ip
+// | 官方网站: https://gitee.com/DtApp/ip
 // +----------------------------------------------------------------------
 // | 开源协议 ( https://mit-license.org )
 // +----------------------------------------------------------------------
-// | gitee 仓库地址 ：https://gitee.com/liguangchun/ip
+// | gitee 仓库地址 ：https://gitee.com/DtApp/ip
 // | github 仓库地址 ：https://github.com/GC0202/ip
-// | Packagist 地址 ：https://packagist.org/packages/liguangchun/ip
+// | Packagist 地址 ：https://packagist.org/packages/DtApp/ip
 // +----------------------------------------------------------------------
+
+use DtApp\Ip\Ali;
+use DtApp\Ip\BaIdu;
+use DtApp\Ip\BiliBili;
+use DtApp\Ip\International;
+use DtApp\Ip\Ip;
+use DtApp\Ip\IpIp;
+use DtApp\Ip\Lookup;
+use DtApp\Ip\NetEase;
+use DtApp\Ip\PConLine;
+use DtApp\Ip\QqWry;
+use DtApp\Ip\SiNa;
+use DtApp\Ip\So;
+use DtApp\Ip\SoHu;
+use DtApp\Ip\TenCent;
 
 require_once '../vendor/autoload.php';
 
@@ -24,11 +39,11 @@ $config = [
 ];
 
 // 获取当前客户端IP地址
-$ip = new LiGuAngChUn\Ip\Ip();
+$ip = new Ip();
 var_dump('客户端IP：', $ip->get());
 
 // 高德地图
-$ali = new LiGuAngChUn\Ip\Ali($config);
+$ali = new Ali($config);
 var_dump('高德地图：', $ali->getMap());
 // 淘宝
 var_dump('淘宝：', $ali->getTaoBao());
@@ -36,54 +51,54 @@ var_dump('淘宝：', $ali->getTaoBao());
 var_dump("阿里云：", $ali->getCloud());
 
 // 百度地图
-$baidu = new LiGuAngChUn\Ip\BaIdu($config);
+$baidu = new BaIdu($config);
 var_dump('百度地图：', $baidu->getMap());
 // 百度搜索
 var_dump('百度搜索：', $baidu->getSearch());
 
 // 腾讯地图
-$tencent = new LiGuAngChUn\Ip\TenCent($config);
+$tencent = new TenCent($config);
 var_dump('腾讯地图：', $tencent->getMap());
 
 // 太平洋
-$pconline = new LiGuAngChUn\Ip\PConLine();
+$pconline = new PConLine();
 var_dump('太平洋：', $pconline->get());
 
 // 搜狐
-$sohu = new LiGuAngChUn\Ip\SoHu();
+$sohu = new SoHu();
 var_dump('搜狐：', $sohu->get());
 
 // 好搜
-$so = new LiGuAngChUn\Ip\So();
+$so = new So();
 var_dump('好搜：', $so->getOneBox());
 
 // 新浪
-$sina = new LiGuAngChUn\Ip\SiNa();
+$sina = new SiNa();
 var_dump('新浪：', $sina->get());
 
 // batch
-$international = new LiGuAngChUn\Ip\International();
+$international = new International();
 var_dump('batch：', $international->get());
 
 // Lookup
-$lookup = new LiGuAngChUn\Ip\Lookup();
+$lookup = new Lookup();
 var_dump('Lookup：', $lookup->get());
 
 // qqWry
-$qqwry = new LiGuAngChUn\Ip\QqWry();
+$qqwry = new QqWry();
 var_dump('qqWry：', $qqwry->getLocation());
 
 // ipIp
-$ipip = new LiGuAngChUn\Ip\IpIp();
+$ipip = new IpIp();
 var_dump('ipip：', $ipip->getFind());
 var_dump('ipip：', $ipip->getFindMap());
 var_dump('ipip：', $ipip->getFindInfo());
 
 // 网易
-$netease = new LiGuAngChUn\Ip\NetEase();
+$netease = new NetEase();
 var_dump('163：', $netease->get());
 
 // 哔哩哔哩
-$bilibili = new LiGuAngChUn\Ip\BiliBili();
+$bilibili = new BiliBili();
 var_dump('bilibili：', $bilibili->get());
 

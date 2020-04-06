@@ -14,7 +14,7 @@
 // | Packagist 地址 ：https://packagist.org/packages/liguangchun/ip
 // +----------------------------------------------------------------------
 
-namespace LiGuAngChUn\Ip;
+namespace DtApp\Ip;
 
 use LiGuAngChUn\Curl\CurlException;
 use LiGuAngChUn\Curl\Get;
@@ -29,7 +29,7 @@ class BasicIp
     /**
      * 定义当前版本
      */
-    const VERSION = '1.1.3';
+    const VERSION = '1.1.4';
 
     /**
      * 配置

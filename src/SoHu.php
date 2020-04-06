@@ -14,7 +14,7 @@
 // | Packagist 地址 ：https://packagist.org/packages/liguangchun/ip
 // +----------------------------------------------------------------------
 
-namespace LiGuAngChUn\Ip;
+namespace DtApp\Ip;
 
 use LiGuAngChUn\Curl\CurlException;
 /**
