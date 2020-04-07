@@ -29,7 +29,7 @@ use DtApp\Ip\SiNa;
 use DtApp\Ip\So;
 use DtApp\Ip\SoHu;
 use DtApp\Ip\TenCent;
-use LiGuAngChUn\Curl\CurlException;
+use DtApp\Curl\CurlException;
 
 require_once '../vendor/autoload.php';
 

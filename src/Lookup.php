@@ -16,7 +16,7 @@
 
 namespace DtApp\Ip;
 
-use LiGuAngChUn\Curl\CurlException;
+use DtApp\Curl\CurlException;
 
 /**
  * lookup

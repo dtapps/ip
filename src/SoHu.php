@@ -16,7 +16,8 @@
 
 namespace DtApp\Ip;
 
-use LiGuAngChUn\Curl\CurlException;
+use DtApp\Curl\CurlException;
+
 /**
  * 搜狐
  * Class SoHu
@@ -31,7 +32,7 @@ class SoHu extends BasicIp
     public function get()
     {
         $url = "http://pv.sohu.com/cityjson?ie=utf-8";
-        $res =  $this->getHttp($url, '', false);
+        $res = $this->getHttp($url, '', false);
         $res = str_replace("var returnCitySN = ", "", $res);
         $res = substr($res, 0, -1);
         $res = json_decode($res, true);

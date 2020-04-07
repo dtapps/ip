@@ -16,7 +16,6 @@
 
 namespace DtApp\Ip;
 
-
 use Exception;
 
 /**

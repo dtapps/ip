@@ -16,8 +16,8 @@
 
 namespace DtApp\Ip;
 
-use LiGuAngChUn\Curl\CurlException;
-use LiGuAngChUn\Curl\Get;
+use DtApp\Curl\CurlException;
+use DtApp\Curl\Get;
 
 /**
  * 中间件
@@ -29,7 +29,7 @@ class BasicIp
     /**
      * 定义当前版本
      */
-    const VERSION = '1.1.5';
+    const VERSION = '1.1.6';
 
     /**
      * 配置
