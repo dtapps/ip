@@ -19,6 +19,7 @@ use DtApp\Ip\BaIdu;
 use DtApp\Ip\BiliBili;
 use DtApp\Ip\International;
 use DtApp\Ip\Ip;
+use DtApp\Ip\IpException;
 use DtApp\Ip\IpIp;
 use DtApp\Ip\Lookup;
 use DtApp\Ip\NetEase;
@@ -28,6 +29,7 @@ use DtApp\Ip\SiNa;
 use DtApp\Ip\So;
 use DtApp\Ip\SoHu;
 use DtApp\Ip\TenCent;
+use LiGuAngChUn\Curl\CurlException;
 
 require_once '../vendor/autoload.php';
 
@@ -44,49 +46,107 @@ var_dump('客户端IP：', $ip->get());
 
 // 高德地图
 $ali = new Ali($config);
-var_dump('高德地图：', $ali->getMap());
+try {
+    var_dump('高德地图：', $ali->getMap());
+} catch (IpException $e) {
+    var_dump($e->getMessage());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 // 淘宝
-var_dump('淘宝：', $ali->getTaoBao());
+try {
+    var_dump('淘宝：', $ali->getTaoBao());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 // 阿里云
-var_dump("阿里云：", $ali->getCloud());
+try {
+    var_dump("阿里云：", $ali->getCloud());
+} catch (IpException $e) {
+    var_dump($e->getMessage());
+}
 
 // 百度地图
 $baidu = new BaIdu($config);
-var_dump('百度地图：', $baidu->getMap());
+try {
+    var_dump('百度地图：', $baidu->getMap());
+} catch (IpException $e) {
+    var_dump($e->getMessage());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 // 百度搜索
-var_dump('百度搜索：', $baidu->getSearch());
+try {
+    var_dump('百度搜索：', $baidu->getSearch());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // 腾讯地图
 $tencent = new TenCent($config);
-var_dump('腾讯地图：', $tencent->getMap());
+try {
+    var_dump('腾讯地图：', $tencent->getMap());
+} catch (IpException $e) {
+    var_dump($e->getMessage());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // 太平洋
 $pconline = new PConLine();
-var_dump('太平洋：', $pconline->get());
+try {
+    var_dump('太平洋：', $pconline->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // 搜狐
 $sohu = new SoHu();
-var_dump('搜狐：', $sohu->get());
+try {
+    var_dump('搜狐：', $sohu->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // 好搜
 $so = new So();
-var_dump('好搜：', $so->getOneBox());
+try {
+    var_dump('好搜：', $so->getOneBox());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // 新浪
 $sina = new SiNa();
-var_dump('新浪：', $sina->get());
+try {
+    var_dump('新浪：', $sina->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // batch
 $international = new International();
-var_dump('batch：', $international->get());
+try {
+    var_dump('batch：', $international->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // Lookup
 $lookup = new Lookup();
-var_dump('Lookup：', $lookup->get());
+try {
+    var_dump('Lookup：', $lookup->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // qqWry
 $qqwry = new QqWry();
-var_dump('qqWry：', $qqwry->getLocation());
+try {
+    var_dump('qqWry：', $qqwry->getLocation());
+} catch (IpException $e) {
+    var_dump($e->getMessage());
+}
 
 // ipIp
 $ipip = new IpIp();
@@ -96,9 +156,17 @@ var_dump('ipip：', $ipip->getFindInfo());
 
 // 网易
 $netease = new NetEase();
-var_dump('163：', $netease->get());
+try {
+    var_dump('163：', $netease->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 
 // 哔哩哔哩
 $bilibili = new BiliBili();
-var_dump('bilibili：', $bilibili->get());
+try {
+    var_dump('bilibili：', $bilibili->get());
+} catch (CurlException $e) {
+    var_dump($e->getMessage());
+}
 

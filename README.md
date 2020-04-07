@@ -8,7 +8,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/liguangchun/ip/v/unstable)](https://packagist.org/packages/liguangchun/ip) 
 [![Total Downloads](https://poser.pugx.org/liguangchun/ip/downloads)](https://packagist.org/packages/liguangchun/ip) 
 [![License](https://poser.pugx.org/liguangchun/ip/license)](https://packagist.org/packages/liguangchun/ip)
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-8892BF.svg)](https://packagist.org/packages/GC0202/ip)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.0-8892BF.svg)](https://packagist.org/packages/GC0202/ip)
 [![Dependency Status](https://david-dm.org/GC0202/ip.svg)](https://david-dm.org/GC0202/ip)
 [![Dependency Status Dev](https://david-dm.org/GC0202/ip/dev-status.svg)](https://david-dm.org/GC0202/ip?type=dev)
 [![GitHub last commit](https://img.shields.io/github/last-commit/GC0202/ip?logo=github)](https://github.com/GC0202/ip/commits)

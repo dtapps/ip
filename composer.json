@@ -1,10 +1,11 @@
 {
   "name": "liguangchun/ip",
-  "description": "IP数据库",
+  "description": "IP数据库，支持纯真数据库、百度腾讯高德地图等平台",
   "keywords": [
     "liguangchun",
     "ip"
   ],
+  "time": "2020-04-06",
   "type": "library",
   "license": "MIT",
   "authors": [
