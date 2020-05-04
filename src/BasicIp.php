@@ -29,7 +29,7 @@ class BasicIp
     /**
      * 定义当前版本
      */
-    const VERSION = '1.1.9';
+    const VERSION = '1.1.10';
 
     /**
      * 配置
